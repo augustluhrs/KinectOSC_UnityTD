@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 282494071844713025}
   m_Layer: 21
   m_Name: handtip_r
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3566600362734131620}
   m_Layer: 21
   m_Name: wrist_l
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 9106258248449522016}
   m_Layer: 21
   m_Name: ear_l
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 8248313468308510867}
   m_Layer: 21
   m_Name: ear_r
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 2856193634334633204}
   m_Layer: 21
   m_Name: ankle_l
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 6690122470145972426}
   m_Layer: 21
   m_Name: ankle_r
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 6185194859946607613}
   m_Layer: 21
   m_Name: hip_r
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 1568548687275252608}
   m_Layer: 21
   m_Name: hand_r
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -339,7 +339,7 @@ GameObject:
   - component: {fileID: 6938330435558190469}
   m_Layer: 21
   m_Name: spine_chest
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 2092419900671726567}
   m_Layer: 21
   m_Name: spine_navel
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 4845246844735676365}
   m_Layer: 21
   m_Name: knee_l
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 7195478940834806032}
   m_Layer: 21
   m_Name: pelvis
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 4659503310874879228}
   m_Layer: 21
   m_Name: handtip_l
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 6175129532346865084}
   m_Layer: 21
   m_Name: knee_r
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 8566051417881681771}
   m_Layer: 21
   m_Name: head
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 4209090994831195508}
   m_Layer: 21
   m_Name: wrist_r
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -587,7 +587,7 @@ GameObject:
   - component: {fileID: 6766054850952118060}
   m_Layer: 21
   m_Name: eye_r
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -618,7 +618,7 @@ GameObject:
   - component: {fileID: 5742684886545351870}
   m_Layer: 21
   m_Name: eye_l
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -649,7 +649,7 @@ GameObject:
   - component: {fileID: 4605215238269843336}
   m_Layer: 21
   m_Name: hip_l
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -680,7 +680,7 @@ GameObject:
   - component: {fileID: 3049325501052147372}
   m_Layer: 21
   m_Name: elbow_r
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: 5662557135592060389}
   m_Layer: 21
   m_Name: shoulder_l
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 5415593901414720210}
   m_Layer: 21
   m_Name: neck
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -773,7 +773,7 @@ GameObject:
   - component: {fileID: 4938569575315726656}
   m_Layer: 21
   m_Name: thumb_l
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -804,7 +804,7 @@ GameObject:
   - component: {fileID: 417648707421560520}
   m_Layer: 21
   m_Name: foot_r
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -835,7 +835,7 @@ GameObject:
   - component: {fileID: 3682543215835790552}
   m_Layer: 21
   m_Name: clavicle_r
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -866,7 +866,7 @@ GameObject:
   - component: {fileID: 7743409956922955522}
   m_Layer: 21
   m_Name: foot_l
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -897,7 +897,7 @@ GameObject:
   - component: {fileID: 1645369550448227485}
   m_Layer: 21
   m_Name: elbow_l
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -928,7 +928,7 @@ GameObject:
   - component: {fileID: 7921192380133084086}
   m_Layer: 21
   m_Name: hand_l
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -959,7 +959,7 @@ GameObject:
   - component: {fileID: 5330831224371119653}
   m_Layer: 21
   m_Name: thumb_r
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -990,7 +990,7 @@ GameObject:
   - component: {fileID: 7902750936892286717}
   m_Layer: 21
   m_Name: clavicle_l
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1021,7 +1021,7 @@ GameObject:
   - component: {fileID: 7064803144246462698}
   m_Layer: 21
   m_Name: nose
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1052,7 +1052,7 @@ GameObject:
   - component: {fileID: 6175910465384277108}
   m_Layer: 21
   m_Name: shoulder_r
-  m_TagString: Untagged
+  m_TagString: joint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
