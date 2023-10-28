@@ -119,8 +119,9 @@ public class BodyDataManager_OSCfromTD : MonoBehaviour
                 if (!isBody) {return;}
                 //if past this point, we have a joint label, param, and val
 
-                //if need to scale, should do so here instead of per feature?
-                /* //getting scaling issues
+                //~~using the calibration variables to map the~~ 
+                //TODO, calibration mapping between kinect min/max and corner min/max
+                /*
                 if (param == "tx" || param == "tz"){
                     val *= floorScale;
                 } else if (param == "ty"){
