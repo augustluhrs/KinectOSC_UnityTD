@@ -10,7 +10,7 @@ To import to existing project, bring in the `Stage` and `AvatarManager` prefabs 
 
 ## Calibration
 
-Calibration process uses buttons in the AvatarManager inspector to capture Kinect positions at 5 points on the stage. Incoming kinect values then can be mapped between the kinect min/max positions and the 5 CalibrationPoints. Uses PlayerPrefs for persistent data so we can store dancer profiles between sessions and not have to calibrate every time we go into play mode.
+Calibration process uses buttons in the AvatarManager inspector to capture Kinect positions at 6 points on the stage. Incoming kinect values then can be mapped between the kinect min/max positions and the 6 CalibrationPoints. Uses PlayerPrefs for persistent data so we can store dancer profiles between sessions and not have to calibrate every time we go into play mode.
 
 *Clicking the calibration buttons multiple times in each spot stores a range of positions that are then averaged to smooth out the noisy data.*
 
@@ -21,26 +21,30 @@ Calibration process uses buttons in the AvatarManager inspector to capture Kinec
 3) Select the **AvatarManager** in the hierarchy and go to the custom inspector interface in the BodyDataManager script component.
    1) Make sure **`Calibrate New Dancer`** is selected in the `Profile` dropdown.
 4) **Play** the scene.
-5) Have the dancer step in the **center** of the stage facing the audience and then press the `CENTER` button.
-   1) Check the `centerPos` Vec3 value that appears in the inspector. It should be somewhere around `[0, 0, 2.5]*`. If it's not, click the `RESET CENTER` button.
-      1) The x should be 0, but the y and z will vary depending on hip height vs Kinect height and distance to Kinect.
-   2) Have them shift their weight slightly, stand up straight, small adjustments -- keep clicking the `CENTER` as they do this. The `centerPos` Vec3 will update slightly until enough positions are stored to display a more stable position.
-6) Have them move to the back right **corner** (at 10:30 on the clock) and repeat the same steps as for Center, but for the `0_BR_1030` section. Follow the same steps moving **clockwise** around the stage for the next three points.
-   1) 4 corner calibration points and example Vec3 positions
+5) ~~Have the dancer step in the **center** of the stage facing the audience and then press the `CENTER` button.~~
+   1) ~~Check the `centerPos` Vec3 value that appears in the inspector. It should be somewhere around `[0, 0, 2.5]*`. If it's not, click the `RESET CENTER` button.~~
+      1) ~~The x should be 0, but the y and z will vary depending on hip height vs Kinect height and distance to Kinect.~~
+   2) ~~Have them shift their weight slightly, stand up straight, small adjustments -- keep clicking the `CENTER` as they do this. The `centerPos` Vec3 will update slightly until enough positions are stored to display a more stable position.~~
+6) Have them move to the back right **corner** (at 10:30 on the clock) and stand facing the kinect.
+   1) Have them shift their weight slightly, stand up straight, rotate, small adjustments -- keep clicking the `SET 0_BR_1030` button as they do this. The `0_BR_1030` Vec3 will update slightly until enough positions are stored to display a more stable position.
+7) Follow the same steps moving **clockwise** around the stage for the next three points.
+   1) 4 corner calibration points and example Vec3 positions if Kinect is in front, at hip height, and roughly 2m from center.
       1) `0_BR_1030`: `[1.1,  .1,  3.9]`
       2) `1_BL_130`:  `[-1.2, .2,  3.7]`
       3) `2_FL_430`:  `[-1.2,  0,  1.3]`
       4) `3_FR_730`:  `[1.2,  .1,  1.2]`
-7) Finally have them go back to the center and place **both hands on the ground**. Click 'FLOOR` and repeat the checking/smoothing process.
+8) Have them go back to the center and stand up straight and **reach as high as they can with their right hand**. Click 'MAXREACH' and repeat the checking/smoothing process.
+   1) IT MUST BE THEIR RIGHT HAND (for now)
+   2) The value will be something like `[0, 1.2, 2.5]`, assuming Kinect around hip height.
+   3) ~~Both hands is fine too, but they'll reach higher with one.~~
+   4) They could also jump if they want that range, but you have to time the button presses, tricky.
+9) Have them place **both hands on the ground**. Click 'FLOOR` and repeat the checking/smoothing process.
    1) The value will be something like `[0, -0.75, 2.5]`, assuming Kinect around hip height.
-8) Then have them stand up straight and **reach as high as they can with one hand**. Click 'MAXREACH' and repeat the checking/smoothing process.
-   1) The value will be something like `[0, 1.2, 2.5]`, assuming Kinect around hip height.
-   2) Both hands is fine too, but they'll reach higher with one.
-   3) They could also jump if they want that range, but you have to time the button presses, tricky.
-9) To confirm the calibration has worked, have the dancer move about the stage and **compare their virtual position**.
-10) If satisfied with the calibration, type the Dancer's name along with the Kinect orientation in the **`ProfileName` input field**.
+10) Lastly, ask them to face forward and **stretch their hands out** to the sides as far as they can. Click the 'WINGSPAN' button and check/smooth.
+11) To confirm the calibration has worked, have the dancer move about the stage and **compare their virtual position**.
+12) If satisfied with the calibration, type the Dancer's name along with the Kinect orientation in the **`ProfileName` input field**.
     1) For example, for Duncan's calibration when the Kinect is in front of him, at hip height, around 2m from center, that profile would be called `DUNCAN_frontHip2m`.
-11) Click `SAVE CALIBRATION PROFILE` to **finish** the calibration and save the profile.
+13) Click `SAVE CALIBRATION PROFILE` to **finish** the calibration and save the profile.
 
 ## TouchDesigner
 

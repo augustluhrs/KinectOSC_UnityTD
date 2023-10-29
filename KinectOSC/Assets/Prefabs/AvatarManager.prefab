@@ -165,6 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 556806441558789153}
   - component: {fileID: 6560552345964625119}
+  - component: {fileID: 8090835466048534943}
   m_Layer: 21
   m_Name: AvatarManager
   m_TagString: Untagged
@@ -231,10 +232,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688e4737c3ef8084e929495824dbca2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floorScale: 7
-  heightScale: 1
-  joints: []
+  showDemoCubes: 1
+  demoCube: {fileID: 3591878993700696234, guid: fcf749b3bef7d9d458614924adf8657e, type: 3}
   cubeScale: 0.1
+  jointTrackingSlots: []
+  incomingPelvisPos: {x: 0, y: 0, z: 0}
+  isCalibrating: 1
+--- !u!114 &8090835466048534943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181976995637101426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea19e86b9d77a7b4ca00a95946a74f90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  calibrationPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  profiles: []
+  selectedProfileIndex: 0
+  cPositions_kinect: []
+  cPositions_unity: []
+  c_0_pos_kinect: {x: 0, y: 0, z: 0}
+  c_1_pos_kinect: {x: 0, y: 0, z: 0}
+  c_2_pos_kinect: {x: 0, y: 0, z: 0}
+  c_3_pos_kinect: {x: 0, y: 0, z: 0}
+  c_4_pos_kinect: {x: 0, y: 0, z: 0}
+  kinect_x_min: -1.25
+  kinect_x_max: 1.25
+  kinect_y_min: -0.75
+  kinect_y_max: 1.15
+  kinect_z_min: 1.25
+  kinect_z_max: 3.55
+  stage_x_min: -5
+  stage_x_max: 5
+  stage_y_min: 0
+  stage_y_max: 3
+  stage_z_min: -5
+  stage_z_max: 5
 --- !u!1 &1220477083101798855
 GameObject:
   m_ObjectHideFlags: 0

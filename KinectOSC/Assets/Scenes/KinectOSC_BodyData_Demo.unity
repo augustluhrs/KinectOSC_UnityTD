@@ -123,6 +123,55 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &191580066 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8102203191576965162, guid: b6701cda9abf3514e90093e02c78d662, type: 3}
+  m_PrefabInstance: {fileID: 1169241338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &218576763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6416516186695611876, guid: b6701cda9abf3514e90093e02c78d662, type: 3}
+  m_PrefabInstance: {fileID: 1169241338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &218576766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218576763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea19e86b9d77a7b4ca00a95946a74f90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  calibrationPoints:
+  - {fileID: 772388708}
+  - {fileID: 191580066}
+  - {fileID: 1071842250}
+  - {fileID: 1322477755}
+  - {fileID: 1068715661}
+  profiles: []
+  selectedProfileIndex: 0
+  cPositions_kinect: []
+  cPositions_unity: []
+  c_0_pos_kinect: {x: 0, y: 0, z: 0}
+  c_1_pos_kinect: {x: 0, y: 0, z: 0}
+  c_2_pos_kinect: {x: 0, y: 0, z: 0}
+  c_3_pos_kinect: {x: 0, y: 0, z: 0}
+  c_4_pos_kinect: {x: 0, y: 0, z: 0}
+  kinect_x_min: -1.25
+  kinect_x_max: 1.25
+  kinect_y_min: -0.75
+  kinect_y_max: 1.15
+  kinect_z_min: 1.25
+  kinect_z_max: 3.55
+  stage_x_min: -5
+  stage_x_max: 5
+  stage_y_min: 0
+  stage_y_max: 3
+  stage_z_min: -5
+  stage_z_max: 5
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +266,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &772388708 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7849897804199014612, guid: b6701cda9abf3514e90093e02c78d662, type: 3}
+  m_PrefabInstance: {fileID: 1169241338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,6 +363,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 29.48, y: 0, z: 0}
+--- !u!1 &1068715661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1710779698578136787, guid: b6701cda9abf3514e90093e02c78d662, type: 3}
+  m_PrefabInstance: {fileID: 1169241338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1071842250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4666262346140350131, guid: b6701cda9abf3514e90093e02c78d662, type: 3}
+  m_PrefabInstance: {fileID: 1169241338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1169241338
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -320,14 +384,6 @@ PrefabInstance:
     - target: {fileID: 33167248829632965, guid: b6701cda9abf3514e90093e02c78d662, type: 3}
       propertyPath: m_Name
       value: CalibrationPoints
-      objectReference: {fileID: 0}
-    - target: {fileID: 1324323478936521289, guid: b6701cda9abf3514e90093e02c78d662, type: 3}
-      propertyPath: demoCube
-      value: 
-      objectReference: {fileID: 3591878993700696234, guid: fcf749b3bef7d9d458614924adf8657e, type: 3}
-    - target: {fileID: 1324323478936521289, guid: b6701cda9abf3514e90093e02c78d662, type: 3}
-      propertyPath: showDemoCubes
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2573941843414022291, guid: b6701cda9abf3514e90093e02c78d662, type: 3}
       propertyPath: m_Name
@@ -380,5 +436,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6416516186695611876, guid: b6701cda9abf3514e90093e02c78d662, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 218576766}
   m_SourcePrefab: {fileID: 100100000, guid: b6701cda9abf3514e90093e02c78d662, type: 3}
+--- !u!1 &1322477755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1752502047977214596, guid: b6701cda9abf3514e90093e02c78d662, type: 3}
+  m_PrefabInstance: {fileID: 1169241338}
+  m_PrefabAsset: {fileID: 0}

@@ -12,10 +12,8 @@ using OscJack;
 * using OSC Jack -- https://github.com/keijiro/OscJack
 */
 
-public class BodyDataManager_OSCfromTD : MonoBehaviour
+public class BodyDataManager : MonoBehaviour
 {
-    [Header("CALIBRATION")]
-    public GameObject[] calibrationPoints = new GameObject[5];
     // y of the avatar manager should be set by height calibration TODO
     // public float floorScale = 7f; //however we want to scale the incoming position data
     // public float heightScale = 1f;
@@ -39,7 +37,11 @@ public class BodyDataManager_OSCfromTD : MonoBehaviour
     //Quaternion[] jointRotations;
     int jointIndex = 0; //dumb but idk, for now
 
+    [Header("OSC DATA")]
     OscServer _server;
+    public Vector3 incomingPelvisPos = new Vector3(0, 0, 0); //hmm
+    public Vector3 incomingRightHandPos = new Vector3(0, 0, 0); //hmm
+    public bool isCalibrating = true;
 
     void Awake(){
         //need to set up the joints before the server tries to access them
@@ -122,7 +124,7 @@ public class BodyDataManager_OSCfromTD : MonoBehaviour
                         //     Debug.Log(string.Format("({0}, {1})",
                         //     "part",
                         //     part));
-                        // }   
+                        // } 
                     }
                 }
 
@@ -158,6 +160,11 @@ public class BodyDataManager_OSCfromTD : MonoBehaviour
                     }
                 }
 
+                //update for calibration
+                if (isCalibrating){
+                    incomingPelvisPos = jointPositions[0];
+                    incomingRightHandPos = jointPositions[15]; //TODO double check
+                }      
 
             }
         );
