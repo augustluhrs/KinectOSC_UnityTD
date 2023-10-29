@@ -84,10 +84,10 @@ public class CalibrationProfileManager : MonoBehaviour
         kinectReadings = new List<Vector3>[6];
 
         //assumes calibration points are placed in a square with each at the four corners and maxreach in the middle
-        stage_x_min = calibrationPoints[0].transform.localPosition.x;
+        stage_x_min = calibrationPoints[3].transform.localPosition.x;
         stage_x_max = calibrationPoints[1].transform.localPosition.x;
-        stage_z_max = calibrationPoints[0].transform.localPosition.z;
-        stage_z_max = calibrationPoints[2].transform.localPosition.z;
+        stage_z_min = calibrationPoints[3].transform.localPosition.z;
+        stage_z_max = calibrationPoints[1].transform.localPosition.z;
         stage_y_max = calibrationPoints[4].transform.localPosition.y;
 
         distanceLimit = Vector3.Distance(calibrationPoints[0].transform.position, calibrationPoints[2].transform.position);
