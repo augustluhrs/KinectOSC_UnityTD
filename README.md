@@ -19,7 +19,7 @@ Calibration process uses buttons in the AvatarManager inspector to capture Kinec
    2) The Floor, CalibrationPoints, and AvatarManager GameObjects all need to be on the same child level, and all at [0, 0, 0].
 2) Make sure the **TouchDesigner project** is open, running, and set to **Live Kinect mode**.
 3) Select the **AvatarManager** in the hierarchy and go to the custom inspector interface in the BodyDataManager script component.
-   1) Make sure **`Calibrate New Dancer`** is selected in the `Profile` dropdown.
+   1) [TODO]Make sure **`Calibrate New Dancer`** is selected in the `Profile` dropdown.
 4) **Play** the scene.
 5) ~~Have the dancer step in the **center** of the stage facing the audience and then press the `CENTER` button.~~
    1) ~~Check the `centerPos` Vec3 value that appears in the inspector. It should be somewhere around `[0, 0, 2.5]*`. If it's not, click the `RESET CENTER` button.~~
@@ -40,18 +40,21 @@ Calibration process uses buttons in the AvatarManager inspector to capture Kinec
    4) They could also jump if they want that range, but you have to time the button presses, tricky.
 9) Have them place **both hands on the ground**. Click 'FLOOR` and repeat the checking/smoothing process.
    1) The value will be something like `[0, -0.75, 2.5]`, assuming Kinect around hip height.
-10) Lastly, ask them to face forward and **stretch their hands out** to the sides as far as they can. Click the 'WINGSPAN' button and check/smooth.
-11) To confirm the calibration has worked, have the dancer move about the stage and **compare their virtual position**.
-12) If satisfied with the calibration, type the Dancer's name along with the Kinect orientation in the **`ProfileName` input field**.
+10) [TODO]Lastly, ask them to face forward and **stretch their hands out** to the sides as far as they can. Click the 'WINGSPAN' button and check/smooth.
+11) After all calibration steps, press the 'CALIBRATE' button. The avatar position should immediately update.
+12) To confirm the calibration has worked, have the dancer move about the stage and **compare their virtual position**.
+13) [TODO]If satisfied with the calibration, type the Dancer's name along with the Kinect orientation in the **`ProfileName` input field**.
     1) For example, for Duncan's calibration when the Kinect is in front of him, at hip height, around 2m from center, that profile would be called `DUNCAN_frontHip2m`.
-13) Click `SAVE CALIBRATION PROFILE` to **finish** the calibration and save the profile.
+14) Click `SAVE CALIBRATION PROFILE` to **finish** the calibration and save the profile.
 
 ## TouchDesigner
 
-Press `spacebar` key to switch between Live Kinect and Dummy Data.
+Press `k` key to switch between Live Kinect and Dummy Data.
 
 When in dummy data mode, press `1` key to switch between:
 
+- Sending example calibration positions using the reference pose
+  - press '6' to cycle between the calibration points (currently don't have hands in the reference pose)
 - Sending all joints with the same x, y, z positions, animating with noise
 - Sending all joints with the same x, y, z positions, animating along box boundaries
 - Sending a snapshot pose with correct Kinect data (person standing with left arm raised)

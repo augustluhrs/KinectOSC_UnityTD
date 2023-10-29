@@ -6,7 +6,7 @@ public class CalibrationProfileManager : MonoBehaviour
 {
     //I don't fully understand why this is separate from the CalibrationInspector file
     [Header("CALIBRATION")]
-    public GameObject[] calibrationPoints = new GameObject[6]; //ugh floor is just parent tho
+    public GameObject[] calibrationPoints = new GameObject[6];
     // public List<CalibrationProfile> profiles = new List<CalibrationProfile>();
     // public CalibrationProfile selectedProfile;
     BodyDataManager bodyDataManager;
@@ -46,19 +46,20 @@ public class CalibrationProfileManager : MonoBehaviour
 
     //calibrated range for mapping in BodyDataManager
     //default values used until calibration profile loaded or more specific values come in
-    //in map, x values need to flip
+    //in map, x values need to flip? TODO, might just work? will store kinect value regardless of polarity, but x_min is unity coord space (left)
     public float kinect_x_min = -1.25f;
     public float kinect_x_max = 1.25f;
     public float kinect_y_min = -0.75f;
     public float kinect_y_max = 1.15f;
     public float kinect_z_min = 1.25f;
     public float kinect_z_max = 3.55f;
-    public float stage_x_min = -5f;
-    public float stage_x_max = 5f;
-    public float stage_y_min = 0f;
-    public float stage_y_max = 3f;
-    public float stage_z_min = -5f;
-    public float stage_z_max = 5f;
+    //the positions of the calibration points on the stage
+    public float stage_x_min;
+    public float stage_x_max;
+    public float stage_y_min;
+    public float stage_y_max;
+    public float stage_z_min;
+    public float stage_z_max;
 
     private void Awake(){
         /*
@@ -69,10 +70,9 @@ public class CalibrationProfileManager : MonoBehaviour
         //assumes avatarManager is on same child level as the calibrationPoints
         //**and that the calibrationPoints are the second child in the hierarchy (under floor)**
         Transform cPoints = transform.parent.GetChild(1);
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++) //skips the floor6 b/c same as default vec3
         {
             calibrationPoints[i] = cPoints.GetChild(i).gameObject;
-            //skips the floor b/c same as default vec3
         }
     }
 
@@ -208,5 +208,38 @@ public class CalibrationProfileManager : MonoBehaviour
                 c_5_pos_kinect = cPositions_kinect[5];
             }
         }
+    }
+
+    public void FinishCalibration()
+    {
+        // after taking all kinect positions at the calibration points,
+        // create new min/max positions so the bodyDataManager can map incoming kinect positions to scale
+
+        // use the 0 and 3 points to average the x min
+        float x_min = (cPositions_kinect[0].x + cPositions_kinect[3].x)/2;
+
+        // use the 1 and 2 points to average the x max
+        float x_max = (cPositions_kinect[1].x + cPositions_kinect[2].x)/2;
+
+        // use the 2 and 3 points to average the z min
+        float z_min = (cPositions_kinect[2].z + cPositions_kinect[3].z)/2;
+
+        // use the 0 and 1 points to average the z max
+        float z_max = (cPositions_kinect[0].z + cPositions_kinect[1].z)/2;
+
+        // use the 4 and 5 y points to get y max/min
+        float y_max = cPositions_kinect[4].y;
+        float y_min = cPositions_kinect[5].y;
+
+        //set the min/max values -- bodyDataManager will use these to map
+        kinect_x_min = x_min;
+        kinect_x_max = x_max;
+        kinect_y_min = y_min;
+        kinect_y_max = y_max;
+        kinect_z_min = z_min;
+        kinect_z_max = z_max;
+
+        //toggle the bool in bodyDataManager so the mapping will take effect
+        bodyDataManager.isCalibrating = false;
     }
 }

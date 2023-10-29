@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(CalibrationProfileManager))]
-public class CalibrationInspector : Editor {
+public class CalibrationInspectorUI : Editor {
 
     public override void OnInspectorGUI() {
         // base.OnInspectorGUI();
@@ -24,6 +24,12 @@ public class CalibrationInspector : Editor {
             manager.profiles = newProfiles;
         }
         */
+
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();    
+        EditorGUILayout.LabelField("GET CALIBRATION POINT POSITIONS:");
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
 
         manager.c_0_pos_kinect = EditorGUILayout.Vector3Field("Kinect position at 0_BR_1030", manager.c_0_pos_kinect);
 
@@ -65,6 +71,18 @@ public class CalibrationInspector : Editor {
         if (GUILayout.Button("SET FLOOR HANDS"))
         {
             manager.CalibrateHands(5);
+        }
+
+        EditorGUILayout.LabelField("\n");
+        GUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();    
+        EditorGUILayout.LabelField("FINISH CALIBRATION:");
+        GUILayout.FlexibleSpace();
+        GUILayout.EndHorizontal();
+
+        if (GUILayout.Button("CALIBRATE"))
+        {
+            manager.FinishCalibration();
         }
 
         /*

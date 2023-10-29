@@ -33,22 +33,31 @@ public class BodyDataManager : MonoBehaviour
     GameObject[] joints;
     string[] jointNames; //have to do this because can't check gameObject.name in the message threads
     Vector3[] jointPositions; //same as above, localposition vectors
+    Vector3[] mappedJointPositions; //after calibration, testing diff between jointPositions
+
     // need rotations
     //Quaternion[] jointRotations;
     int jointIndex = 0; //dumb but idk, for now
 
-    [Header("OSC DATA")]
+    [Header("OSC DATA AND CALIBRATION")]
     OscServer _server;
     public Vector3 incomingPelvisPos = new Vector3(0, 0, 0); //hmm
     public Vector3 incomingRightHandPos = new Vector3(0, 0, 0); //hmm
     public bool isCalibrating = true;
+    CalibrationProfileManager calib;
 
     void Awake(){
+        // calibrationProfileManager = GetComponent<CalibrationProfileManager>();
+        calib = GetComponent<CalibrationProfileManager>(); //shortening just for map function legibility
+
+
+
         //need to set up the joints before the server tries to access them
         //checks for joint label in the children of the avatar manager
         joints = new GameObject[32];
         jointNames = new string[32];
         jointPositions = new Vector3[32];
+        mappedJointPositions = new Vector3[32];
         IterateTransformHierarchy(transform);
 
         //uncheck in inspector if don't want cubes to show
@@ -131,8 +140,7 @@ public class BodyDataManager : MonoBehaviour
                 if (!isBody) {return;}
                 //if past this point, we have a joint label, param, and val
 
-                //~~using the calibration variables to map the~~ 
-                //TODO, calibration mapping between kinect min/max and corner min/max
+                //
                 /*
                 if (param == "tx" || param == "tz"){
                     val *= floorScale;
@@ -160,12 +168,26 @@ public class BodyDataManager : MonoBehaviour
                     }
                 }
 
-                //update for calibration
-                if (isCalibrating){
+                //update pre-mapping for calibration
+                if (isCalibrating)
+                {
                     incomingPelvisPos = jointPositions[0];
                     incomingRightHandPos = jointPositions[15]; //TODO double check
-                }      
-
+                } else
+                {
+                    // //map the positions to the calibrated scale
+                    // for (int i = 0; i < 32; i++)
+                    // {
+                    //     Vector3 jointPos = jointPositions[i];
+                    //     Debug.Log(jointPos);
+                    //     float mapped_x, mapped_y, mapped_z;
+                    //     mapped_x = Map(jointPos.x, calib.kinect_x_min, calib.kinect_x_max, calib.stage_x_min, calib.stage_x_max);
+                    //     mapped_y = Map(jointPos.y, calib.kinect_y_min, calib.kinect_y_max, calib.stage_y_min, calib.stage_y_max);
+                    //     mapped_z = Map(jointPos.z, calib.kinect_z_min, calib.kinect_z_max, calib.stage_z_min, calib.stage_z_max);
+                    //     mappedJointPositions[i] = new Vector3(mapped_x, mapped_y, mapped_z);
+                    //     Debug.Log(mappedJointPositions[i]);
+                    // }
+                }    
             }
         );
     }
@@ -174,11 +196,44 @@ public class BodyDataManager : MonoBehaviour
     void Update()
     {
         //update gameObject transforms -- TODO check for optimization
-        for(int i = 0; i < 32; i++){
-            joints[i].transform.localPosition = jointPositions[i];
+        if (isCalibrating)
+        {
+            //display incoming kinect positions without scaling
+            for(int i = 0; i < 32; i++){
+                joints[i].transform.localPosition = jointPositions[i];
+            }
+        } else 
+        {
+            //map the positions to the calibrated scale
+            for (int i = 0; i < 32; i++)
+            {
+                Debug.Log(i);
+                Vector3 jointPos = jointPositions[i];
+                Debug.Log(jointPos);
+                float mapped_x, mapped_y, mapped_z;
+                mapped_x = Map(jointPos.x, calib.kinect_x_min, calib.kinect_x_max, calib.stage_x_min, calib.stage_x_max);
+                mapped_y = Map(jointPos.y, calib.kinect_y_min, calib.kinect_y_max, calib.stage_y_min, calib.stage_y_max);
+                mapped_z = Map(jointPos.z, calib.kinect_z_min, calib.kinect_z_max, calib.stage_z_min, calib.stage_z_max);
+                mappedJointPositions[i] = new Vector3(mapped_x, mapped_y, mapped_z);
+                Debug.Log(mappedJointPositions[i]);
+            }
+            for(int i = 0; i < 32; i++){
+                joints[i].transform.localPosition = mappedJointPositions[i];
+            }
         }
+        
 
         //feature tests:
+    }
+
+    // Map function to remap a value from one range to another
+    float Map(float value, float fromMin, float fromMax, float toMin, float toMax)
+    {
+        // Ensure the value is within the source range
+        // value = Mathf.Clamp(value, fromMin, fromMax); //need this?
+
+        // Calculate the mapped value
+        return (value - fromMin) / (fromMax - fromMin) * (toMax - toMin) + toMin;
     }
 
     void OnDestroy()
