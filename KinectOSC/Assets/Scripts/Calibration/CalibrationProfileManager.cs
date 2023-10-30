@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+* This script contains the calibration functions used by the CalibrationInspector
+* and will eventually also manage the saved dancer CalibrationProfiles
+*/
+
 public class CalibrationProfileManager : MonoBehaviour
 {
     //I don't fully understand why this is separate from the CalibrationInspector file
@@ -17,32 +22,19 @@ public class CalibrationProfileManager : MonoBehaviour
     public int selectedProfileIndex = 0;
     */
 
-    // calibration positions -- stores current best kinect pos or mapped unity pos
-    // kinect is averaged incoming pos from kinect
-    // unity is the position from kinect mapped to stage bounds
+    // calibration positions -- stores current best points' kinect pos
     public Vector3[] cPositions_kinect;
-    public Vector3[] cPositions_unity;
-    float distanceLimit; //just to prevent spikes in data
-    // lists for smooth calibration
+    float distanceLimit; //just to prevent spikes in data if kinect loses tracking during calibration
+    // lists to collect multiple readings for smooth calibration
     List<Vector3>[] kinectReadings;
-    // List<Vector3> c_0_kinectReadings = new List<Vector3>();
-    // List<Vector3> c_1_kinectReadings = new List<Vector3>();
-    // List<Vector3> c_2_kinectReadings = new List<Vector3>();
-    // List<Vector3> c_3_kinectReadings = new List<Vector3>();
-    // List<Vector3> c_4_kinectReadings = new List<Vector3>();
 
-    //annoying, have to have redundant code
-    public Vector3 c_0_pos_kinect;
-    public Vector3 c_1_pos_kinect;
-    public Vector3 c_2_pos_kinect;
-    public Vector3 c_3_pos_kinect;
+    //annoying, redundant code
+    public Vector3 c_0_pos_kinect; //back right 1030
+    public Vector3 c_1_pos_kinect; //back left 130
+    public Vector3 c_2_pos_kinect; //front left 430
+    public Vector3 c_3_pos_kinect; //front right 730
     public Vector3 c_4_pos_kinect; //right hand reaching up
     public Vector3 c_5_pos_kinect; //hands on floor
-    // public Vector3 c_0_pos_unity;
-    // public Vector3 c_1_pos_unity;
-    // public Vector3 c_2_pos_unity;
-    // public Vector3 c_3_pos_unity;
-    // public Vector3 c_4_pos_unity;
 
     //calibrated range for mapping in BodyDataManager
     //default values used until calibration profile loaded or more specific values come in
@@ -80,7 +72,6 @@ public class CalibrationProfileManager : MonoBehaviour
         bodyDataManager = GetComponent<BodyDataManager>();
 
         cPositions_kinect = new Vector3[6];
-        cPositions_unity = new Vector3[6];
         kinectReadings = new List<Vector3>[6];
 
         //assumes calibration points are placed in a square with each at the four corners and maxreach in the middle
@@ -91,6 +82,7 @@ public class CalibrationProfileManager : MonoBehaviour
         stage_y_max = calibrationPoints[4].transform.localPosition.y;
 
         distanceLimit = Vector3.Distance(calibrationPoints[0].transform.position, calibrationPoints[2].transform.position);
+        
         for (int i = 0; i < 6; i++)
         {
             kinectReadings[i] = new List<Vector3>();
@@ -124,7 +116,7 @@ public class CalibrationProfileManager : MonoBehaviour
     *   POSITION CALIBRATION
     */
     // public void Calibrate(int point, Vector3 kinectPos){
-    public void Calibrate(int point){ //can't pass b/c CalibrationInspector not component...
+    public void Calibrate(int point){ //can't pass kinectPos b/c CalibrationInspector not component...
         Vector3 kinectPos = bodyDataManager.incomingPelvisPos;
         //check to see if first reading, will be used to prevent spikes in data that would ruin average
         if (cPositions_kinect[point] != Vector3.zero)
@@ -170,7 +162,7 @@ public class CalibrationProfileManager : MonoBehaviour
         }
     }
 
-    public void CalibrateHands(int point){ 
+    public void CalibrateHands(int point){ //if refactoring, could have an argument that's a type flag between corner/hands
         Vector3 kinectHandPos = bodyDataManager.incomingRightHandPos;
         //check to see if first reading, will be used to prevent spikes in data that would ruin average
         if (cPositions_kinect[point] != Vector3.zero)
@@ -239,7 +231,13 @@ public class CalibrationProfileManager : MonoBehaviour
         kinect_z_min = z_min;
         kinect_z_max = z_max;
 
-        //toggle the bool in bodyDataManager so the mapping will take effect
+        //toggle the bool in bodyDataManager so the mapping will take effect and show
         bodyDataManager.isCalibrating = false;
+    }
+
+    public void ClearReadings(int point)
+    {
+        cPositions_kinect[point] = Vector3.zero;
+        kinectReadings[point].Clear();
     }
 }

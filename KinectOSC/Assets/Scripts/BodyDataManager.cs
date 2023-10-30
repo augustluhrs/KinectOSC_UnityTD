@@ -7,7 +7,6 @@ using OscJack;
 * sorts by address, assigns position and rotation to manager gameobjects in hierarchy
 * optional detection features with trigger/range/threshold settings
 *
-* TODO -- calibration with center, four corners, and height
 *
 * using OSC Jack -- https://github.com/keijiro/OscJack
 */
@@ -49,8 +48,6 @@ public class BodyDataManager : MonoBehaviour
     void Awake(){
         // calibrationProfileManager = GetComponent<CalibrationProfileManager>();
         calib = GetComponent<CalibrationProfileManager>(); //shortening just for map function legibility
-
-
 
         //need to set up the joints before the server tries to access them
         //checks for joint label in the children of the avatar manager

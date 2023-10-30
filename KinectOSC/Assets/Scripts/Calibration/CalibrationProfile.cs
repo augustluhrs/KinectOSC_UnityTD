@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+*   The template for dancer profiles
+*   contains name, calibration positions, and wingspan, for now
+*/
+
 [CreateAssetMenu(fileName = "ProfilePresets", menuName = "KinectOSC/ProfilePresets", order = 0)]
 [System.Serializable]
 public class CalibrationProfile : ScriptableObject {

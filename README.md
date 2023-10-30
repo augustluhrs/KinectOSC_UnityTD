@@ -33,12 +33,13 @@ Calibration process uses buttons in the AvatarManager inspector to capture Kinec
       2) `1_BL_130`:  `[-1.2, .2,  3.7]`
       3) `2_FL_430`:  `[-1.2,  0,  1.3]`
       4) `3_FR_730`:  `[1.2,  .1,  1.2]`
-8) Have them go back to the center and stand up straight and **reach as high as they can with their right hand**. Click 'MAXREACH' and repeat the checking/smoothing process.
+   2) If there was an error and you need to **reset**, click the `CLEAR READINGS` button under the position you want to erase all readings from.
+8) Have them go back to the center and stand up straight and **reach as high as they can with their right hand**. Click 'SET 4_REACH_RIGHT' and repeat the checking/smoothing process.
    1) IT MUST BE THEIR RIGHT HAND (for now)
    2) The value will be something like `[0, 1.2, 2.5]`, assuming Kinect around hip height.
    3) ~~Both hands is fine too, but they'll reach higher with one.~~
    4) They could also jump if they want that range, but you have to time the button presses, tricky.
-9) Have them place **both hands on the ground**. Click 'FLOOR` and repeat the checking/smoothing process.
+9) Have them place **both hands on the ground**. Click 'SET FLOOR HANDS` and repeat the checking/smoothing process.
    1) The value will be something like `[0, -0.75, 2.5]`, assuming Kinect around hip height.
 10) [TODO]Lastly, ask them to face forward and **stretch their hands out** to the sides as far as they can. Click the 'WINGSPAN' button and check/smooth.
 11) After all calibration steps, press the 'CALIBRATE' button. The avatar position should immediately update.
